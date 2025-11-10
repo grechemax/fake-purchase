@@ -32,20 +32,10 @@ class HelmetPage {
 
     }
 
-    /**
-     * Change the product quantity.
-     * @param {number|string} qty – desired quantity (default: 1)
-     */
     selectAmount(qty = 1) {
         cy.get('[id^="quantity_"]').clear().type(`${qty}`);
     }
 
-    /**
-     * Full “add to basket” flow:
-     *   1. pick options → 2. set quantity (if provided) → 3. click add button
-     * @param {Object} [opts]
-     * @param {number} [opts.qty] – quantity to set before adding
-     */
     addToBasket({ qty } = {}) {
         cy.get('.single_add_to_cart_button').click();
     }

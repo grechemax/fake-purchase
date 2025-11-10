@@ -18,21 +18,16 @@ describe('Checkout', () => {
         HelmetPage.selectAmount()
         HelmetPage.addToBasket()
         HelmetPage.clickCheckout()
-        cy.closePromoIfPresent(); // TODO timing is wrong - it appears in ~ 10s
+        cy.closePromoIfPresent();
 
-        CheckoutPage.enterPersonalDetails(
-            name,
-            phone,
-            email
-        );
+        CheckoutPage.enterPersonalDetails(name, phone, email);
         CheckoutPage.acceptTermsAndConfirm()
 
-        // Assert API call succeeded
-        // cy.wait('@createOrder').its('response.statusCode').should('eq', 201);
-
-        // Assert UI confirmation
-        cy.contains('Ваш заказ принят').should('be.visible'); // TODO get rid of cyrillic
-        // TODO console.log order details
+        cy.contains('Ваш заказ принят').should('be.visible');
+        cy.xpath('//*[contains(@class, "woocommerce-order-overview__order")]').should('be.visible');
+        cy.xpath('//*[contains(@class, "woocommerce-order-overview__date")]').should('be.visible');
+        cy.xpath('//*[contains(@class, "woocommerce-order-overview__total")]').should('be.visible');
+        // TODO log order details for headless mode
     });
 
 })
