@@ -1,0 +1,27 @@
+{
+  "name": "bronetorg-cypress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress": "cypress open",
+    "cypress:run": "cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/grechemax-group/bronetorg-cypress.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/grechemax-group/bronetorg-cypress/issues"
+  },
+  "homepage": "https://gitlab.com/grechemax-group/bronetorg-cypress#readme",
+  "devDependencies": {
+    "@testing-library/cypress": "^10.0.3",
+    "cypress": "^14.4.0",
+    "cypress-xpath": "^2.0.1"
+  }
+}
