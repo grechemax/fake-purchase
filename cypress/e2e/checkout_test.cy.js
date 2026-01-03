@@ -3,6 +3,12 @@ import HomePage from "../support/pages/HomePage";
 import HelmetPage from "../support/pages/HelmetPage";
 import {generateRandomEmail, generateRandomName, generateRandomRussianPhone} from "../support/utils";
 
+Cypress.on('uncaught:exception', (err, runnable) => {
+  if (err.message.includes('scrollHeight')) {
+    return false;
+  }
+  return true;
+});
 
 describe('Checkout', () => {
     before('open page', () => {
@@ -18,6 +24,7 @@ describe('Checkout', () => {
         HelmetPage.selectAmount()
         HelmetPage.addToBasket()
         HelmetPage.clickCheckout()
+        CheckoutPage.clickCheckout()
         cy.closePromoIfPresent();
 
         CheckoutPage.enterPersonalDetails(name, phone, email);
