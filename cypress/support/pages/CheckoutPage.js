@@ -1,5 +1,9 @@
 class CheckoutPage {
 
+    clickCheckout(){
+        cy.get('.checkout-button').click()
+    }
+
     fillName(name) {
         cy.get('#billing_first_name').type(name);
     }
