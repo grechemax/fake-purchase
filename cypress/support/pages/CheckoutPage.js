@@ -27,6 +27,10 @@ class CheckoutPage {
         cy.get('.woocommerce-billing-fields__field-wrapper input[type="checkbox"]').eq(1).check();
         cy.get('#order_review button[type=submit]').click()
     }
+
+    getOrderDetails() {
+        return cy.get('.woocommerce-order-overview__order > strong').invoke('text');
+    }
 }
 
 export default new CheckoutPage();

@@ -34,7 +34,11 @@ describe('Checkout', () => {
         cy.xpath('//*[contains(@class, "woocommerce-order-overview__order")]').should('be.visible');
         cy.xpath('//*[contains(@class, "woocommerce-order-overview__date")]').should('be.visible');
         cy.xpath('//*[contains(@class, "woocommerce-order-overview__total")]').should('be.visible');
-        // TODO log order details for headless mode
+        
+        CheckoutPage.getOrderDetails().then((orderNumber) => {
+            cy.log('Order number: ' + orderNumber);               // log to Cypress Test Runner UI
+            cy.task('log', '✓ Order number: ' + orderNumber);     // log to Node console
+        });
     });
 
 })
