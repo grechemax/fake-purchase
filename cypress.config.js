@@ -1,17 +1,24 @@
 const { defineConfig } = require("cypress");
+require('dotenv').config();
 
 module.exports = defineConfig({
   e2e: {
-    defaultCommandTimeout: 10000, // 10 seconds
-    watchForFileChanges: false,   // ⬅️ turn off auto-restart
+    defaultCommandTimeout: 15000,
+    watchForFileChanges: false,   // turn off auto-restart
     viewportWidth: 1920,
     viewportHeight: 1080,
-    baseUrl: 'https://bronetorg.ru',
+    baseUrl: process.env.BASE_URL,
+    blockHosts: ['*.yandex.ru', '*.google-analytics.com', '*.mc.yandex.ru', 'mc.yandex.ru'],
     env: {
       "expectedTitle": "Военное снаряжение"
     },
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      on('task', {
+        log(message) {
+          console.log(message)
+          return null
+        }
+      })
     },
   },
 });
