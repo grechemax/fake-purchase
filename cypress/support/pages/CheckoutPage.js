@@ -22,9 +22,12 @@ class CheckoutPage {
         this.fillEmail(email);
     }
 
-    acceptTermsAndConfirm() {
+    acceptTerms() {
         cy.get('.woocommerce-billing-fields__field-wrapper input[type="checkbox"]').first().check();
         cy.get('.woocommerce-billing-fields__field-wrapper input[type="checkbox"]').eq(1).check();
+    }
+
+    placeOrder() {
         cy.get('#order_review button[type=submit]').click()
     }
 

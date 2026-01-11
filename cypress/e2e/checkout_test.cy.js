@@ -10,7 +10,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
   return true;
 });
 
-describe('Buy a helmet from best selling proposal', () => {
+describe('e2e checkout tests', () => {
     before('open page', () => {
         cy.visit('/');
     })
@@ -18,7 +18,7 @@ describe('Buy a helmet from best selling proposal', () => {
     let name = generateRandomName()
     let email = generateRandomEmail(name)
 
-    it('Adds recommended helmet to the basket and completes purchase', () => {
+    it('Buy a helmet from best selling proposal', () => {
         HomePage.openProductByName('Беркут');
         HelmetPage.selectOptions()
         HelmetPage.selectAmount()
@@ -28,14 +28,15 @@ describe('Buy a helmet from best selling proposal', () => {
         cy.closePromoIfPresent();
 
         CheckoutPage.enterPersonalDetails(name, phone, email);
-        CheckoutPage.acceptTermsAndConfirm()
+        CheckoutPage.acceptTerms();
+        CheckoutPage.placeOrder()
 
         CheckoutPage.verifyOrderSuccess();
         
         CheckoutPage.getOrderDetails().then((orderNumber) => {
-            cy.log('Order number =====> ' + orderNumber);               // log to Cypress Test Runner UI
-            cy.task('log', '✓ Order number =====> ' + orderNumber);     // log to Node console
+            cy.logOrderNumber(orderNumber);
         });
     });
 
+    it('Buy a helmet from best selling proposal', () => {});
 })
