@@ -10,7 +10,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
   return true;
 });
 
-describe('Checkout', () => {
+describe('Buy a helmet from best selling proposal', () => {
     before('open page', () => {
         cy.visit('/');
     })
@@ -19,7 +19,7 @@ describe('Checkout', () => {
     let email = generateRandomEmail(name)
 
     it('Adds recommended helmet to the basket and completes purchase', () => {
-        HomePage.openHelmetPage();
+        HomePage.openProductByName('Беркут');
         HelmetPage.selectOptions()
         HelmetPage.selectAmount()
         HelmetPage.addToBasket()
@@ -30,14 +30,11 @@ describe('Checkout', () => {
         CheckoutPage.enterPersonalDetails(name, phone, email);
         CheckoutPage.acceptTermsAndConfirm()
 
-        cy.contains('Ваш заказ принят').should('be.visible');
-        cy.xpath('//*[contains(@class, "woocommerce-order-overview__order")]').should('be.visible');
-        cy.xpath('//*[contains(@class, "woocommerce-order-overview__date")]').should('be.visible');
-        cy.xpath('//*[contains(@class, "woocommerce-order-overview__total")]').should('be.visible');
+        CheckoutPage.verifyOrderSuccess();
         
         CheckoutPage.getOrderDetails().then((orderNumber) => {
-            cy.log('Order number: ' + orderNumber);               // log to Cypress Test Runner UI
-            cy.task('log', '✓ Order number: ' + orderNumber);     // log to Node console
+            cy.log('Order number =====> ' + orderNumber);               // log to Cypress Test Runner UI
+            cy.task('log', '✓ Order number =====> ' + orderNumber);     // log to Node console
         });
     });
 

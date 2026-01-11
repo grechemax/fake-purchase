@@ -31,6 +31,13 @@ class CheckoutPage {
     getOrderDetails() {
         return cy.get('.woocommerce-order-overview__order > strong').invoke('text');
     }
+
+    verifyOrderSuccess() {
+        cy.contains('Ваш заказ принят').should('be.visible');
+        cy.get('.woocommerce-order-overview__order').should('be.visible');
+        cy.get('.woocommerce-order-overview__date').should('be.visible');
+        cy.get('.woocommerce-order-overview__total').should('be.visible');
+    }
 }
 
 export default new CheckoutPage();
