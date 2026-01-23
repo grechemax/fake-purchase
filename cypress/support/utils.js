@@ -31,6 +31,22 @@ const RUS_DOMAINS = [
     'mail.ru',
 ];
 
+const FANCY_PREFIXES = [
+    'ya', 'ka', 'wtf', 'ro', 'big', 'ural', 'bro',
+    'real', 'fsb', 'lol', 'tol', 'mega', 'bbs', 'gram'
+];
+
+const FANCY_SUFFIXES = [
+    'master', 'pro', 'god', 'lord', 'king', 'boss', 'star',
+    'spb', 'ded', 'voin', 'ninja', 'men', 'guru'
+];
+
+const COOL_WORDS = [
+    'memnui', 'suhoi', 'majak', 'opel', 'lev', 'belui',
+    'storm', 'black', 'ice', 'spel', 'light', 'ivo',
+    'kiber', 'les', 'oki', 'quadro', 'shram'
+];
+
 const map = {
     а:'a', б:'b', в:'v', г:'g', д:'d', е:'e', ё:'yo', ж:'zh', з:'z',
     и:'i', й:'y', к:'k', л:'l', м:'m', н:'n', о:'o', п:'p', р:'r',
@@ -58,9 +74,44 @@ function transliterate(text) {
 
 export function generateRandomEmail(firstName) {
     const user   = transliterate(firstName);
-    const digits = Math.floor(Math.random() * 90) + 10;      // 10-99
-
     const domain = RUS_DOMAINS[Math.floor(Math.random() * RUS_DOMAINS.length)];
-
-    return `${user}${digits}@${domain}`;
+    
+    // Randomly choose one of several email patterns
+    const pattern = Math.floor(Math.random() * 6);
+    
+    switch(pattern) {
+        case 0:
+            // Classic: firstname + 2 digits
+            const digits = Math.floor(Math.random() * 90) + 10;
+            return `${user}${digits}@${domain}`;
+        
+        case 1:
+            // Prefix style: mr_firstname, super_firstname
+            const prefix = FANCY_PREFIXES[Math.floor(Math.random() * FANCY_PREFIXES.length)];
+            return `${prefix}_${user}@${domain}`;
+        
+        case 2:
+            // Suffix style: firstname_master, firstname_pro
+            const suffix = FANCY_SUFFIXES[Math.floor(Math.random() * FANCY_SUFFIXES.length)];
+            return `${user}_${suffix}@${domain}`;
+        
+        case 3:
+            // Cool word combo: firstname_dragon, firstname_cyber
+            const word = COOL_WORDS[Math.floor(Math.random() * COOL_WORDS.length)];
+            return `${user}_${word}@${domain}`;
+        
+        case 4:
+            // Birth year style: firstname1985, firstname1999
+            const year = Math.floor(Math.random() * 30) + 1980; // 1980-2009
+            return `${user}${year}@${domain}`;
+        
+        case 5:
+            // Combo: firstname + word + digits
+            const coolWord = COOL_WORDS[Math.floor(Math.random() * COOL_WORDS.length)];
+            const num = Math.floor(Math.random() * 100);
+            return `${user}_${coolWord}${num}@${domain}`;
+        
+        default:
+            return `${user}@${domain}`;
+    }
 }

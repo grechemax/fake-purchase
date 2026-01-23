@@ -22,6 +22,7 @@
   "devDependencies": {
     "@testing-library/cypress": "^10.0.3",
     "cypress": "^14.4.0",
+    "cypress-real-events": "^1.15.0",
     "cypress-xpath": "^2.0.1",
     "dotenv": "^17.2.3"
   }

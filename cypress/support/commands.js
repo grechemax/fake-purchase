@@ -26,6 +26,7 @@
 
 import '@testing-library/cypress/add-commands'
 import 'cypress-xpath';
+import 'cypress-real-events/support';
 
 // Close promo popup if present
 Cypress.Commands.add('closePromoIfPresent', () => {

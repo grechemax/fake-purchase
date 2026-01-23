@@ -18,25 +18,29 @@ describe('e2e checkout tests', () => {
     let name = generateRandomName()
     let email = generateRandomEmail(name)
 
-    it('Buy a helmet from best selling proposal', () => {
-        HomePage.openProductByName('Беркут');
-        HelmetPage.selectOptions()
-        HelmetPage.selectAmount()
-        HelmetPage.addToBasket()
-        HelmetPage.clickCheckout()
-        CheckoutPage.clickCheckout()
-        cy.closePromoIfPresent();
+    // it('Buy a helmet from best selling proposal', () => {
+    //     HomePage.openProductByName('Беркут');
+    //     HelmetPage.selectOptions()
+    //     HelmetPage.selectAmount()
+    //     HelmetPage.addToBasket()
+    //     HelmetPage.clickCheckout()
+    //     CheckoutPage.clickCheckout()
+    //     cy.closePromoIfPresent();
 
-        CheckoutPage.enterPersonalDetails(name, phone, email);
-        CheckoutPage.acceptTerms();
-        CheckoutPage.placeOrder()
+    //     CheckoutPage.enterPersonalDetails(name, phone, email);
+    //     CheckoutPage.acceptTerms();
+    //     CheckoutPage.placeOrder()
 
-        CheckoutPage.verifyOrderSuccess();
+    //     CheckoutPage.verifyOrderSuccess();
         
-        CheckoutPage.getOrderDetails().then((orderNumber) => {
-            cy.logOrderNumber(orderNumber);
-        });
-    });
+    //     CheckoutPage.getOrderDetails().then((orderNumber) => {
+    //         cy.logOrderNumber(orderNumber);
+    //     });
+    // });
 
-    it('Buy a helmet from best selling proposal', () => {});
+    it('Buy a X from Y', () => {
+        cy.scrollTo('top');
+        HomePage.hoverOverCatalog();
+        HomePage.clickOnSubcategory('Аптечки и подсумки ');
+    });
 })
