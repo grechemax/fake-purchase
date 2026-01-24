@@ -55,7 +55,7 @@ const map = {
 };
 
 
-export function generateRandomRussianPhone() {
+export function generateRandomPhone() {
     const prefix = '+79';
     const randomDigits = Array.from({ length: 9 }, () => Math.floor(Math.random() * 10)).join('');
     return prefix + randomDigits;
