@@ -1,6 +1,6 @@
-// noinspection SpellCheckingInspection
+import BasePage from './BasePage';
 
-class HelmetPage {
+class HelmetPage extends BasePage {
 
     /**
      * Choose required product options.
@@ -34,14 +34,6 @@ class HelmetPage {
 
     selectAmount(qty = 1) {
         cy.get('[id^="quantity_"]').clear().type(`${qty}`);
-    }
-
-    addToBasket({ qty } = {}) {
-        cy.get('.single_add_to_cart_button').click();
-    }
-
-    clickCheckout(){
-        cy.get('.btn-cart').click()
     }
 }
 

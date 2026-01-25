@@ -1,8 +1,6 @@
-class CheckoutPage {
+import BasePage from './BasePage';
 
-    clickCheckout(){
-        cy.get('.checkout-button').click()
-    }
+class CheckoutPage extends BasePage {
 
     fillName(name) {
         cy.get('#billing_first_name').type(name);
@@ -27,13 +25,17 @@ class CheckoutPage {
         cy.get('.woocommerce-billing-fields__field-wrapper input[type="checkbox"]').eq(1).check();
     }
 
-    placeOrder() {
-        cy.get('#order_review button[type=submit]').click()
-    }
-
     getOrderDetails() {
-        return cy.get('.woocommerce-order-overview__order > strong').invoke('text');
-    }
+    const details = {};
+    return cy.get('.woocommerce-order-overview__order > strong').invoke('text').then(text => {
+        details.orderNumber = text;
+    }).get('.woocommerce-customer-details--email').invoke('text').then(text => {
+        details.customerEmail = text;
+    }).get('td.woocommerce-table__product-name').invoke('text').then(text => {
+        details.productName = text.trim();
+        return details;
+    });
+}
 
     verifyOrderSuccess() {
         cy.contains('Ваш заказ принят').should('be.visible');
