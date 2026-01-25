@@ -40,11 +40,15 @@ Cypress.Commands.add('closePromoIfPresent', () => {
     });
 });
 
-Cypress.Commands.add('logOrderDetail', (details) => {
-    cy.log(
-        'Order number =====> ' + details.orderNumber, 
-        'Customer email =====> ' + details.customerEmail, 
-        'Product name =====> ' + details.productName);
-    cy.task('log', '✓ Order number =====> ' + details.orderNumber);
+Cypress.Commands.add('logOrderDetails', (details) => {
+    cy.log(`Order number: ${details.orderNumber}`);
+    cy.log(`Customer email: ${details.customerEmail}`);
+    cy.log(`Product name: ${details.productName}`);
+    
+    cy.task('log', `\n========== ORDER DETAILS ==========`);
+    cy.task('log', `Order number =====> ${details.orderNumber}`);
+    cy.task('log', `Customer email =====> ${details.customerEmail}`);
+    cy.task('log', `Product name =====> ${details.productName}`);
+    cy.task('log', `===================================\n`);
 });
 
