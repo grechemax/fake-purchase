@@ -32,8 +32,8 @@ const RUS_DOMAINS = [
 ];
 
 const FANCY_PREFIXES = [
-    'ya', 'ka', 'wtf', 'ro', 'big', 'ural', 'bro',
-    'real', 'fsb', 'lol', 'tol', 'mega', 'bbs', 'gram'
+    'ya', 'ka', 'wtf', 'rogosin', 'samuraev', 'ural', 'bro',
+    'real', 'fsb', 'lol', 'tol', 'klimov', 'bbs', 'gram'
 ];
 
 const FANCY_SUFFIXES = [
@@ -43,7 +43,7 @@ const FANCY_SUFFIXES = [
 
 const COOL_WORDS = [
     'memnui', 'suhoi', 'majak', 'opel', 'lev', 'belui',
-    'storm', 'black', 'ice', 'spel', 'light', 'ivo',
+    'vepr', 'black', 'ice', 'dikii', 'light', 'ivo',
     'kiber', 'les', 'oki', 'quadro', 'shram'
 ];
 
