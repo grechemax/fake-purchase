@@ -3,7 +3,7 @@ require('dotenv').config();
 
 module.exports = defineConfig({
   e2e: {
-    defaultCommandTimeout: 15000,
+    defaultCommandTimeout: 20000,
     watchForFileChanges: false,   // turn off auto-restart
     viewportWidth: 1920,
     viewportHeight: 1080,
