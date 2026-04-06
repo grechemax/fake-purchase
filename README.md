@@ -1,6 +1,6 @@
 # Fake Purchase Cypress Tests
 
-E2E tests for automated checkout flow.
+E2E tests for an e-commerce application covering checkout flow and product filtering. Built with Cypress and using the Page Object Model pattern.
 
 ## Setup
 ```bash
@@ -19,12 +19,8 @@ npm run cypress
 ### Headless Mode (CLI)
 ```bash
 npm run cypress:run
-# or
-npx cypress run
 ```
 
-**Note:** Use `npm run` for scripts defined in package.json, and `npx` to run packages directly.
-
 ## Tests
-- `checkout_test.cy.js` - Complete purchase flow
-- `aks_for_calback_test.cy.js` - Callback request form
+- `checkout.cy.js` - Complete purchase flow
+- `filters.cy.js` - Product filtering and search
