@@ -4,13 +4,6 @@ import HomePage from "../support/pages/HomePage";
 import HelmetPage from "../support/pages/HelmetPage";
 import {generateRandomEmail, generateRandomName, generateRandomPhone} from "../support/utils";
 
-Cypress.on('uncaught:exception', (err, runnable) => {
-  if (err.message.includes('scrollHeight')) {
-    return false;
-  }
-  return true;
-});
-
 describe('e2e checkout tests', () => {
     let phone;
     let name;
