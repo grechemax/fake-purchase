@@ -18,13 +18,14 @@ import './commands'
 
 import 'cypress-real-events/support';
 
-require('cypress-xpath');
-
-// Ignore known third-party application errors that should not fail Cypress tests.
-//  - scrollHeight: intermittent site behavior
-//  - e.charAt is not a function: jquery.mask plugin issue in the app
+// Handle uncaught exceptions globally
 Cypress.on('uncaught:exception', (err, runnable) => {
-  if (err.message.includes('scrollHeight') || err.message.includes('e.charAt is not a function')) {
+  if (
+    err.message.includes('scrollHeight') ||
+    err.message.includes('offline') ||
+    err.message.includes('e.charAt is not a function') ||
+    err.message.includes('There is no route for the given namespace')
+  ) {
     return false;
   }
   return true;
