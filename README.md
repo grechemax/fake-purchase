@@ -12,12 +12,12 @@ npm install
 ### Interactive Mode (UI)
 ```bash
 npx cypress open
-# or
-npm run cypress
 ```
 
 ### Headless Mode (CLI)
 ```bash
+npx cypress run 
+or
 npm run cypress:run
 ```
 
