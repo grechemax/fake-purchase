@@ -8,7 +8,9 @@ class HelmetPage extends BasePage {
     selectOptions() {
         // Material (2 options available)
         let random = Math.floor(Math.random() * 2) + 1;
-        cy.get('#material-izgotovleniya').select(1);
+        cy.get('#material-izgotovleniya').should('be.visible');
+        cy.get('#material-izgotovleniya').select(random);
+        cy.get('.woocommerce-variation.single_variation').should('be.visible');
 
         // // Helmet cover (8 options available)
         // cy.get(
@@ -34,7 +36,7 @@ class HelmetPage extends BasePage {
     }
 
     selectAmount(qty = 1) {
-        cy.get('[id^="quantity_"]').clear().type(`${qty}`);
+        cy.get('[id^="quantity_"]').should('be.visible').should('be.enabled').clear().type(`${qty}`);
     }
 }
 
