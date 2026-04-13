@@ -9,11 +9,11 @@ class BasePage {
     }
 
     addToBasket({ qty } = {}) {
-        cy.get('.single_add_to_cart_button').click();
+        cy.get('.single_add_to_cart_button').should('be.visible').click();
     }
 
     clickCheckout(){
-        cy.get('.btn-cart').click();
+        cy.get('.btn-cart', { timeout: 10000 }).should('be.visible').click();
     }
 
      clickConfirmOrder() {
