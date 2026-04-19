@@ -1,18 +1,24 @@
 name: Cypress E2E Tests
+
 on: [push, pull_request]
 
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          # This runs 'npx cypress run' automatically
           browser: chrome
+          # Optional: add these if you want more control
+          record: false
+          spec: cypress/e2e/**/*.cy.js
+        env:
+          CYPRESS_BASE_URL: ${{ vars.BASE_URL }}
