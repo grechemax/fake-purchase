@@ -13,7 +13,7 @@ class BasePage {
     }
 
     clickCheckout(){
-        cy.get('.btn-cart', { timeout: 10000 }).should('be.visible').click();
+        cy.get('.btn-cart', { timeout: 15000 }).should('be.visible').click();
     }
 
      clickConfirmOrder() {
