@@ -6,5 +6,9 @@
   {
     "name": "Сапсан",
     "description": "Lightweight protective helmet"
+  },
+  {
+    "name": "Штурмовой",
+    "description": "Helmet with enhanced ballistic protection"
   }
 ]

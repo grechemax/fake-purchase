@@ -9,6 +9,8 @@ describe('e2e checkout tests', () => {
     let name;
     let email;
     let firstAidKits;
+    let helmets;
+    let selectedHelmet;
     let selectedFirstAidKit;
 
     before('load fixtures', () => {
@@ -16,6 +18,11 @@ describe('e2e checkout tests', () => {
             firstAidKits = data;
             selectedFirstAidKit = firstAidKits[Math.floor(Math.random() * firstAidKits.length)];
             cy.log(`Selected first aid kit: ${selectedFirstAidKit.name}`);
+        });
+        cy.fixture('helmets').then((data) => {
+            helmets = data;
+            selectedHelmet = helmets[Math.floor(Math.random() * helmets.length)];
+            cy.log(`Selected helmet: ${selectedHelmet.name}`);
         });
     })
     
@@ -27,7 +34,7 @@ describe('e2e checkout tests', () => {
 
     it('Buy a helmet from best selling proposal', () => {
         cy.visit('/');
-        HomePage.openProductByName('Беркут');
+        HomePage.openProductByName(selectedHelmet.name);
         HelmetPage.selectOptions()
         HelmetPage.selectAmount()
         HelmetPage.addToBasket()
@@ -38,7 +45,6 @@ describe('e2e checkout tests', () => {
         CheckoutPage.acceptTerms();
         CheckoutPage.clickConfirmOrder();
         CheckoutPage.verifyOrderSuccess();
-        
         CheckoutPage.getOrderDetails().then((details) => {
             cy.logOrderDetails(details);
         });
